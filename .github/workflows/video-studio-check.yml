@@ -1,0 +1,17 @@
+name: Video Studio checks
+on:
+  push:
+    branches: [feature/online-video-studio-mvp]
+  pull_request:
+    paths: ['app/**','components/**','server/**','package.json','next.config.mjs']
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm install
+      - run: npm run web:build

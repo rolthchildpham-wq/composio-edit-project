@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: composio-video-studio-mvp
+    branch: feature/online-video-studio-mvp
+    runtime: docker
+    dockerfilePath: ./Dockerfile.video-studio
+    plan: starter
+    healthCheckPath: /
+    autoDeployTrigger: off
+    envVars:
+      - key: NODE_ENV
+        value: production
