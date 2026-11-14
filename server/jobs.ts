@@ -23,7 +23,7 @@ export function startRender(compositionId:string,quality:"720"|"1080"){
   try{
    job.status="rendering";
    await fs.mkdir(OUTPUT_ROOT,{recursive:true});
-   const bundleLocation=await bundle({entryPoint:path.resolve(process.cwd(),"src/index.ts"),webpackOverride:enableTailwind,logLevel:"error"});
+   const bundleLocation=await bundle(path.resolve(process.cwd(),"src/index.ts"),undefined,{webpackOverride:enableTailwind,logLevel:"error"});
    const composition=await selectComposition({serveUrl:bundleLocation,id:compositionId});
    const file=path.join(OUTPUT_ROOT,id+".mp4");
    const scale=quality==="720"?2/3:1;
